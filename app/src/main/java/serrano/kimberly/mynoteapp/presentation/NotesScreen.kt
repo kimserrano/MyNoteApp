@@ -1,6 +1,7 @@
 package serrano.kimberly.mynoteapp.presentation
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -158,6 +159,10 @@ fun NoteItem(
             .clip(RoundedCornerShape(10.dp))
             .background(MaterialTheme.colorScheme.primaryContainer)
             .padding(12.dp)
+            .clickable {
+                // Cuando se hace clic en un ítem, lanzamos el evento de edición
+                onEvent(NotesEvent.EditNote(state.notes[index]))
+            }
     ) {
         Column(
             modifier = Modifier.weight(1f)
